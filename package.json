@@ -1,0 +1,21 @@
+{
+  "name": "did",
+  "version": "1.0.0",
+  "description": "new did UX with account abstraction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web3",
+    "did",
+    "account",
+    "abstraction"
+  ],
+  "author": "adu",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "hardhat": "^2.13.0"
+  }
+}
