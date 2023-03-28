@@ -13,7 +13,11 @@ interface ENSRegistry {
 }
 
 contract EntryPoint {
-    address public constant ensRegistry = 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e;
+    address private _ensRegistry;
+
+    constructor(address ensRegistryAddress) {
+        _ensRegistry = ensRegistryAddress;
+    }
 
     function handleOps(IAccount.UserOperation[] calldata userOps) external payable {
         for (uint256 i = 0; i < userOps.length; i++) {
@@ -72,7 +76,7 @@ contract EntryPoint {
     // }
     function resolve(string memory name) internal view returns (address) {
         // Get an instance of the ENS registry contract
-        ENSRegistry registry = ENSRegistry(ensRegistry);
+        ENSRegistry registry = ENSRegistry(_ensRegistry);
 
         // Split the domain name into labels
         bytes memory domain = bytes(name);

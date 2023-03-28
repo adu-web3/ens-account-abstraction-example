@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "@ensdomains/ens-contracts": "^0.0.20",
-    "@openzeppelin/contracts": "^4.8.2"
+    "@nomiclabs/hardhat-waffle": "^2.0.5",
+    "@openzeppelin/contracts": "^4.8.2",
+    "eth-ens-namehash": "^2.0.8"
   }
 }
