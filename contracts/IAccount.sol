@@ -5,6 +5,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 interface IAccount is IERC165 {
+  // Leave out other neccessary fields like `gasLimit`, `chainId`, `gasPrice` to simplify the test
   struct UserOperation {
     string sender;
     string recipient;
