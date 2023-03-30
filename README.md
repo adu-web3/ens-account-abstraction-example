@@ -19,7 +19,7 @@ To set up the project, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/<your-github-username>/ens-account-abstraction-example.git
+git clone https://github.com/wns-lab/ens-account-abstraction-example.git
 ```
 
 2. Change into the project directory:
