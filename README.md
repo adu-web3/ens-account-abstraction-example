@@ -49,7 +49,7 @@ npx hardhat node
 5. In a new terminal window, deploy the contracts:
 
 ```bash
-npx hardhat run --network localhost test/ens-aa-test.js
+npx hardhat test --network localhost test/ens-aa-test.js
 ```
 
 After completing these steps, you should see the output from the test suite indicating the successful execution of the example.
