@@ -10,6 +10,8 @@ This example demonstrates how to use Ethereum ENS domain names with Account Abst
 
 Besides, allowing the user to sign the information with domain name is more user-friendly.
 
+Gas fee paymant stuff is left out in this example to simplify it.
+
 ## Setup
 
 To set up the project, follow these steps:
@@ -17,24 +19,46 @@ To set up the project, follow these steps:
 1. Clone the repository:
 
 ```bash
-    git clone https://github.com/<your-github-username>/ens-account-abstraction-example.git
+git clone https://github.com/<your-github-username>/ens-account-abstraction-example.git
 ```
 
 2. Change into the project directory:
 
 ```bash
-    cd ens-account-abstraction-example
+cd ens-account-abstraction-example
 ```
 
-3. Create a `.env` file in the project root and set the `ALCHEMY_API_KEY` variable to your Alchemy API key
+3. Install the required dependencies:
 
-## Running tests
+```bash
+npm install
+```
 
-To run the tests, execute `npx hardhat test`. This will run a series of tests that showcase the following:
+4. Compile the smart contracts:
 
-1. Registering and resolving ENS domain names
-2. Creating a `BasicAccount` contract for Alice and Bob
-3. Transferring ETH from Alice's `BasicAccount` to Bob using ENS names and a signed `UserOperation`
+```bash
+npx hardhat compile
+```
 
-The tests demonstrate how to interact with ENS, create and sign UserOperations, and execute them via an EntryPoint contract.
+5. Run a local Ethereum node for testing:
 
+```bash
+npx hardhat node
+```
+
+5. In a new terminal window, deploy the contracts:
+
+```bash
+npx hardhat run --network localhost test/ens-aa-test.js
+```
+
+After completing these steps, you should see the output from the test suite indicating the successful execution of the example.
+
+## Key Components
+
+- `contracts/IAccount.sol`: define the `IAccount` interface and the `UserOperation` struct.
+- `contracts/EntryPoint.sol`: This contract serves as the entry point for processing `UserOperation` structures, resolving ENS domain names on-chain, validating the signature and executing the operations.
+- `contracts/BasicAccount.sol`: An implementation of the `IAccount` interface that allows users to sign the pseudo-transaction(`UserOperation`) with ENS domain names, and verifys the `BaseAccount` owner's private key instead of the private key of the contract itself.
+- `test/ens-aa-test.js`: The test suite that demonstrates how Alice can sign a `UserOperation` using ENS domain names and execute it through the EntryPoint contract.
+
+By understanding the interactions between these components, you can gain a deeper understanding of how Account Abstraction with ENS domain names can enhance the user experience on Ethereum.
